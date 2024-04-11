@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <style>
+      .shell {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 4rem;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          min-height: 100vh;
+          margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div id="app-1">
+        <h1>App 1 - sync</h1>
+      </div>
+      <div id="app-2">
+        <h1>App 2 - sync</h1>
+      </div>
+      <div id="app-3">
+        <h1>App 3 - sync</h1>
+      </div>
+      <div id="app-4">
+        <h1>App 4 - non-sync</h1>
+      </div>
+    </div>
+    <script type="module" src="/src/app-1/main.ts"></script>
+    <script type="module" src="/src/app-2/main.ts"></script>
+    <script type="module" src="/src/app-3/main.ts"></script>
+    <script type="module" src="/src/app-4/main.ts"></script>
+  </body>
+</html>

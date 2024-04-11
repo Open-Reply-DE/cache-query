@@ -1,0 +1,41 @@
+stages:
+  - test
+  - publish
+
+test-job:
+  image: node:16.14.2
+  stage: test
+  cache:
+    key: npm
+    policy: pull-push
+    paths:
+      - .npm/
+  script:
+    - npm ci
+    - npm run lint
+    - npm run test:unit
+    - npm run build
+  artifacts:
+    paths:
+      - node_modules/
+      - dist/
+    expire_in: 1 days
+  tags:
+    - infra-cicd
+
+publish-job:
+  image: node:16.14.2
+  stage: publish
+  only:
+    - /^release\/*/
+  cache:
+    key: npm
+    policy: pull-push
+    paths:
+      - .npm/
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_PUBLISH_TOKEN}">.npmrc
+    - npm publish
+  tags:
+    - infra-cicd
+
