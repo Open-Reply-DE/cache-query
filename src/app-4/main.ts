@@ -5,6 +5,7 @@ import { setup as watchersSetup } from "./watchers";
 const element1 = document.createElement("div");
 element1.innerHTML = `  
     <div class="card">
+      <div>no refetch on window focus</div>
       <button id="app-4-subscribers1" type="button"></button>
     </div>
 `;
@@ -16,6 +17,7 @@ subscribersSetup(element1.querySelector<HTMLButtonElement>("#app-4-subscribers1"
 const element3 = document.createElement("div");
 element3.innerHTML = `
     <div class="card">
+      <div>refetch on window focus</div>
       <button id="app-4-watchers1" type="button"></button>
     </div>
 `;

@@ -17,7 +17,7 @@ const mutate = async (): Promise<string> => {
 };
 
 export function setup(element: HTMLButtonElement) {
-  const { invalidate } = useQuery(["subscribers"], query, {
+  useQuery(["subscribers"], query, {
     onSuccess: async (result) => {
       element.innerHTML = result;
     },
@@ -39,9 +39,10 @@ export function setup(element: HTMLButtonElement) {
 
   element.addEventListener("click", async () => {
     await mutate();
-    // you would write this:
+    // you would write this to run the query again
     // run();
-    // but now you can write this:
-    invalidate();
+    // but now you can write this instead to refetch the query from the cache
+    // notice that the sites of query and mutation can be different and decoupled
+    cache.invalidate(["subscribers"]);
   });
 }
