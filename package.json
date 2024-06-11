@@ -1,5 +1,5 @@
 {
-  "name": "@openreply/query-cache",
+  "name": "@openreplyde/query-cache",
   "version": "1.0.0-alpha.1",
   "type": "module",
   "files": [
